@@ -45,7 +45,7 @@ app.factory('datacontext', function (logger, model, jsonResultsAdapter) {
         console.log("Retreiving data from the browser local storage cache");
         var importData = window.localStorage.getItem(stashName);
         manager2.importEntities(importData);
-        return manager2.executeQuery("comments").then(returnResults);
+        return manager2.executeQuery(query).then(returnResults);
 
     }
 

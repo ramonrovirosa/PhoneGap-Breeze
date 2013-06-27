@@ -47,7 +47,7 @@
        
         
         <div data-role="controlgroup" data-type="horizontal" style="width: 50%; margin: 0 auto; margin-bottom: 40px; margin-top: 40px;">
-			<a href="Index_knockout.html" data-role="button" data-theme="a"  data-icon="arrow-r">Knockout Version</a>
+			<a id="ang_button" href="Index_knockout.html" data-role="button" data-theme="a"  data-icon="arrow-r">Knockout Version</a>
 		</div>	
         
     </div>
@@ -74,6 +74,14 @@
     
     <script src="http://debug.phonegap.com/target/target-script-min.js#7479298"></script>
     
+
+	<script>
+            $(function() {
+                $("#ang_button").click(function() {
+                    $(location).attr('href',"Index_knockout.html");
+                });
+            });
+    </script>
 
 </body>
 </html>

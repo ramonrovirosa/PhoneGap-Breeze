@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="Content/reset.css" />
     <link rel="stylesheet" href="Content/toastr.css" />
     <link rel="stylesheet" href="Content/app.css" />
+    
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> 
+	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 
     <title>Comments Sample Knockout</title>
 
@@ -32,14 +36,15 @@
             </tr>
         </table>
     </div>
-    
+
     <div data-role="controlgroup" data-type="horizontal" style="width: 50%; margin: 0 auto; margin-bottom: 40px; margin-top: 40px;">
-		<a href="index.html" data-role="button" data-theme="a"  data-icon="arrow-r">Angular Version</a>
-	</div>
+        <a id="knk_button" href="index.html" data-role="button" data-theme="a"  data-icon="arrow-r">Angular Version</a>
+    </div>
+	
 </div>
 
     <!-- 3rd party libraries -->
-    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <!-- <script src="Scripts/jquery-1.9.1.min.js"></script> -->
     <script src="Scripts/q.js"></script>
     <script src="Scripts/breeze.debug.js"></script>
     <script src="Scripts/toastr.js"></script>
@@ -53,9 +58,14 @@
     <!--<script src="app/jsonResultsAdapter.js"></script>-->
     <script src="app/comments.viewmodel.js"></script>
     <!--<script src="app/logger.js"></script>-->
-     
     
-  
+    <script>
+            $(function() {
+                $("#knk_button").click(function() {
+                    $(location).attr('href',"index.html");
+                });
+            });
+    </script>
 
 </body>
 </html>
