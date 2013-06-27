@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Capture Photo</title>
+
+    <script src="cordova.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+	<script type='text/javascript' src='../knockout-2.2.1.js'></script>
+
+    <script>
+	
+		
+    </script>
+ 
+    
+</head>
+<body style="background-color:#333333; ">	
+	<div data-bind="slideVisible: giftWrap, slideDuration:600">You have selected the option</div>
+	<label><input type="checkbox" data-bind="checked: giftWrap" /> Gift wrap</label>
+	<button data-bind=" click: save">Finished</button>	
+	<script type="text/javascript">
+	
+		ko.bindingHandlers.slideVisible = {
+		    update: function(element, valueAccessor, allBindingsAccessor) {
+		        // First get the latest data that we're bound to
+		        var value = valueAccessor(), allBindings = allBindingsAccessor();
+		         
+		        // Next, whether or not the supplied model property is observable, get its current value
+		        var valueUnwrapped = ko.utils.unwrapObservable(value); 
+		         
+		        // Grab some more data from another binding property
+		        var duration = allBindings.slideDuration || 400; // 400ms is default duration unless otherwise specified
+		         
+		        // Now manipulate the DOM element
+		        if (valueUnwrapped == true) 
+		            $(element).slideDown(duration); // Make the element visible
+		        else
+		            $(element).slideUp(duration);   // Make the element invisible
+		    }
+		};
+	
+	    var viewModel = {
+	        giftWrap: ko.observable(true)
+	    };
+	    ko.applyBindings(viewModel);
+	</script>	
+</body>
+</html>
