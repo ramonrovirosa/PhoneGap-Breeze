@@ -50,6 +50,12 @@
 			<a id="ang_button" href="Index_knockout.html" data-role="button" data-theme="a"  data-icon="arrow-r">Knockout Version</a>
 		</div>	
         
+        <div data-role="controlgroup" style="margin-top:-20px;" data-type="horizontal" style="width: 50%; margin: 0 auto; margin-bottom: 40px; margin-top: 40px;" >
+			<a id="contacts" href="contacts/contacts.html" style='margin-left:20px;' data-role="button" data-theme="a">Contacts</a>
+            <a id="calendar_button" href="calendar/calendar.html" data-role="button" data-theme="a">Calendar</a>
+            <a id="camera_button" href="camera/camera.html" data-role="button" data-theme="a">Camera</a>
+		</div>	
+        
     </div>
 
 
@@ -69,19 +75,9 @@
     <script src="app/model.js"></script>
     <script src="app/jsonResultsAdapter.js"></script>
     <script src="app/logger.js"></script>
-    
-    <script type="text/javascript" src="phonegap.js"></script>
-    
-    <script src="http://debug.phonegap.com/target/target-script-min.js#7479298"></script>
-    
+    <script src="app/refresh.js"></script>
 
-	<script>
-            $(function() {
-                $("#ang_button").click(function() {
-                    $(location).attr('href',"Index_knockout.html");
-                });
-            });
-    </script>
+    <!--<script src="http://debug.phonegap.com/target/target-script-min.js#7072080637"></script>-->
 
 </body>
 </html>

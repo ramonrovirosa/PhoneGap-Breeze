@@ -108,5 +108,9 @@
     <plugin name="SplashScreen" value="org.apache.cordova.SplashScreen"/>
     
     <plugin name="Notification" value="org.apache.cordova.Notification"/>
+
+    <plugin name="Echo" value="com.example.hellogap.plugin.Echo" />
+    
+    <plugin name="savePhoto" value="com.example.hellogap.plugin.savePhoto" />
     
 </widget>

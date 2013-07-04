@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Capture Photo</title>
+
+
+    <script src="../cordova.js"></script>
+
+    <link rel="stylesheet" href="../Content/reset.css" />
+    <link rel="stylesheet" href="../Content/toastr.css" />
+    <link rel="stylesheet" href="../Content/app.css" />
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+    <script>
+
+        var pictureSource;   // picture source
+        var destinationType; // sets the format of returned value
+
+        // Wait for Cordova to connect with the device
+        //
+        document.addEventListener("deviceready",onDeviceReady,false);
+
+        // Cordova is ready to be used!
+        //
+        function onDeviceReady() {
+            pictureSource=navigator.camera.PictureSourceType;
+            destinationType=navigator.camera.DestinationType;
+        }
+
+        function onPhotoDataSuccess(imageData) {
+
+           // var smallImage = document.getElementById('smallImage');
+
+            // Unhide image elements
+            //
+            //smallImage.style.display = 'block';
+
+            // Show the captured photo
+            // The inline CSS rules are used to resize the image
+            //
+            //smallImage.src = "data:image/jpeg;base64," + imageData;
+
+            var image = "data:image/jpeg;base64," + imageData;
+
+            saveImage(imageData);
+
+        }
+
+        function capturePhoto() {
+
+            // Take picture using device camera and retrieve image as base64-encoded string
+            navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, allowEdit: true,
+                destinationType: destinationType.DATA_URL })
+        }
+
+        function onFail(message) {
+            alert('Failed because: ' + message);
+        }
+
+        function saveImage(image) {
+
+            window.saveImage = function (str, callback) {
+                cordova.exec(callback, function (err) {
+                    callback('Nothing to echo.');
+                }, "savePhoto", "saveJPG", [str]);
+            };
+
+            //alert(image);
+
+            window.saveImage(image, function (echoValue) {
+                alert(echoValue);
+            });
+        }
+
+    </script>
+
+</head>
+<body>
+<!--<button onclick="capturePhoto();">Capture Photo</button> <br>-->
+<button onclick="capturePhoto();">Take Photo</button> <br>
+<!--<button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>-->
+<!--<button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>-->
+<img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+<img style="display:none;" id="largeImage" src="" />
+</body>
+</html>
